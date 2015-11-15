@@ -14,11 +14,12 @@ namespace DDA_Bres
         public Form1()
         {
             InitializeComponent();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,6 +35,19 @@ namespace DDA_Bres
             Bitmap myBitmap = LineBres(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text));
             g.DrawImage(myBitmap, 10, 50);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+        
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Graphics g = CreateGraphics();
+            Bitmap myBitmap = CircleBres(20, Color.Black);
+            g.DrawImage(myBitmap, 10, 50);
+        } 
+
         private Bitmap LineDDA(int x1, int y1, int x2, int y2)
         {
             if (x1 > x2) { int a = x1; x1 = x2; x2 = a; }
@@ -99,7 +113,43 @@ namespace DDA_Bres
             return nova;
         }
 
-        private Bitmap 
+        private void CircleDDA() 
+        { 
+            
+        }
 
+        private Bitmap CircleBres(int r, Color color) 
+        {
+            Bitmap btm = new Bitmap(700, 700);
+            int x, y, d;
+            x = 0;
+            y = r;
+            d = 1 - r;
+            btm = CirclePoints(0, r, color);
+            while (y > x) {
+                if (d < 0) { d += 2 * x + 3; }
+                else {
+                    d += 2 * (x - y) + 5;
+                    y--;
+                }
+                x++;
+                btm = CirclePoints(x, y, color);
+            }
+            return btm;
+        }
+
+        private Bitmap CirclePoints(int x, int y, Color color)
+        {
+            Bitmap btm = new Bitmap(700, 700);
+            btm.SetPixel(x, y, color);
+            btm.SetPixel(y, x, color);
+            btm.SetPixel(x, -y, color);
+            btm.SetPixel(y, -x, color);
+            btm.SetPixel(-x, y, color);
+            btm.SetPixel(-y, x, color);
+            btm.SetPixel(-x, -y, color);
+            btm.SetPixel(-y, -x, color);
+            return btm;
+        }
     }
 }
