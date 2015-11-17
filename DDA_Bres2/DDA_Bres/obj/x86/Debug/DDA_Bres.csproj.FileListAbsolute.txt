@@ -1,0 +1,18 @@
+C:\Users\yuliya\AppData\Local\Temporary Projects\DDA_Bres\bin\Debug\DDA_Bres.exe
+C:\Users\yuliya\AppData\Local\Temporary Projects\DDA_Bres\bin\Debug\DDA_Bres.pdb
+C:\Users\yuliya\AppData\Local\Temporary Projects\DDA_Bres\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\yuliya\AppData\Local\Temporary Projects\DDA_Bres\obj\x86\Debug\DDA_Bres.Form1.resources
+C:\Users\yuliya\AppData\Local\Temporary Projects\DDA_Bres\obj\x86\Debug\DDA_Bres.Properties.Resources.resources
+C:\Users\yuliya\AppData\Local\Temporary Projects\DDA_Bres\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\yuliya\AppData\Local\Temporary Projects\DDA_Bres\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\yuliya\AppData\Local\Temporary Projects\DDA_Bres\obj\x86\Debug\DDA_Bres.exe
+C:\Users\yuliya\AppData\Local\Temporary Projects\DDA_Bres\obj\x86\Debug\DDA_Bres.pdb
+C:\Users\yuliya\documents\visual studio 2010\Projects\DDA_Bres\DDA_Bres\obj\x86\Debug\DDA_Bres.exe
+C:\Users\yuliya\documents\visual studio 2010\Projects\DDA_Bres\DDA_Bres\obj\x86\Debug\DDA_Bres.pdb
+C:\Users\yuliya\documents\visual studio 2010\Projects\DDA_Bres\DDA_Bres\bin\Debug\DDA_Bres.exe
+C:\Users\yuliya\documents\visual studio 2010\Projects\DDA_Bres\DDA_Bres\bin\Debug\DDA_Bres.pdb
+C:\Users\yuliya\documents\visual studio 2010\Projects\DDA_Bres\DDA_Bres\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\yuliya\documents\visual studio 2010\Projects\DDA_Bres\DDA_Bres\obj\x86\Debug\DDA_Bres.Form1.resources
+C:\Users\yuliya\documents\visual studio 2010\Projects\DDA_Bres\DDA_Bres\obj\x86\Debug\DDA_Bres.Properties.Resources.resources
+C:\Users\yuliya\documents\visual studio 2010\Projects\DDA_Bres\DDA_Bres\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\yuliya\documents\visual studio 2010\Projects\DDA_Bres\DDA_Bres\obj\x86\Debug\GenerateResource.write.1.tlog
