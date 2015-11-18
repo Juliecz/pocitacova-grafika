@@ -1,0 +1,9 @@
+C:\Users\yuliya\AppData\Local\Temporary Projects\Curves\bin\Debug\Curves.exe
+C:\Users\yuliya\AppData\Local\Temporary Projects\Curves\bin\Debug\Curves.pdb
+C:\Users\yuliya\AppData\Local\Temporary Projects\Curves\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\yuliya\AppData\Local\Temporary Projects\Curves\obj\x86\Debug\Curves.Form1.resources
+C:\Users\yuliya\AppData\Local\Temporary Projects\Curves\obj\x86\Debug\Curves.Properties.Resources.resources
+C:\Users\yuliya\AppData\Local\Temporary Projects\Curves\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\yuliya\AppData\Local\Temporary Projects\Curves\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\yuliya\AppData\Local\Temporary Projects\Curves\obj\x86\Debug\Curves.exe
+C:\Users\yuliya\AppData\Local\Temporary Projects\Curves\obj\x86\Debug\Curves.pdb
