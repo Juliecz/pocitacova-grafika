@@ -26,21 +26,20 @@ namespace DDA_Bres
         {
             Graphics g = CreateGraphics();
             Bitmap myBitmap = LineDDA(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text));
-            //g.DrawImage(myBitmap, 10, 50);
+            g.DrawImage(myBitmap, 10, 50);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Graphics g = CreateGraphics();
             Bitmap myBitmap = LineBres(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text));
-            //g.DrawImage(myBitmap, 10, 50);
+            g.DrawImage(myBitmap, 10, 50);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Graphics g = CreateGraphics();
-            Bitmap myBitmap = CircleDDA(Convert.ToInt32(textBox1.Text)+50, Convert.ToInt32(textBox2.Text)+50, 0, Convert.ToInt32(textBox5.Text), Color.Black);
-            //Bitmap myBitmap = CircleDDA(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text), Color.Black);
+            Bitmap myBitmap = CircleDDA(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox5.Text), Color.Black);
             g.DrawImage(myBitmap, 20, 130);
             
         }
@@ -48,7 +47,7 @@ namespace DDA_Bres
         private void button4_Click(object sender, EventArgs e)
         {
             Graphics g = CreateGraphics();
-            Bitmap myBitmap = CircleBres(Convert.ToInt32(textBox1.Text) + 50, Convert.ToInt32(textBox2.Text) + 50, 0, Convert.ToInt32(textBox5.Text), Color.Black);
+            Bitmap myBitmap = CircleBres(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), 0, Convert.ToInt32(textBox5.Text), Color.Black);
             g.DrawImage(myBitmap, 20, 130);
         } 
 
@@ -62,7 +61,6 @@ namespace DDA_Bres
 
             nova.SetPixel(x1, y1 + nova.Height / 4, Color.Black);
 
-            //if (m=0) nova.SetPixel(x1, y1, Color.Black);
             if (m == 1)
             {
                 while (x1 < x2)
@@ -134,26 +132,10 @@ namespace DDA_Bres
             return nova;
         }
 
-        //private Bitmap CircleDDA(int x, int y, int a, int r, Color color) 
-        private Bitmap CircleDDA(int r, Color color) 
+        private Bitmap CircleDDA(double xx, double yy, int r, Color color) 
         {
             Bitmap btm = new Bitmap(700, 700);
-            /*int x1 = a, y1 = r;
-            int p = 1 - r;
-            btm = CirclePoints(btm, x1, y1, x, y, color);
-            while (x1 < y1) {
-                if (p < 0)
-                {
-                    x1++;
-                    p += 2 * x1 + 1;
-                }
-                else {
-                    x1++;
-                    y1--;
-                    p += 2 * (x1 - y1) + 1;
-                }
-                btm = CirclePoints(btm, x1, y1, x, y, color);
-            }*/
+            
             double v, x1, y1, x2, y2, startx, starty, a;
             int i;
 
@@ -164,7 +146,22 @@ namespace DDA_Bres
 
             i = 0;
             v = Math.Pow((double)2, (double)i);
-            //while()
+            while (v < r) {
+                v = Math.Pow((double)2, (double)i);
+                i++;
+            }
+            a = 1 / Math.Pow(2, i - 1);
+            x2 = x1 + y1 * a;
+            y2 = y1 - a * x2;
+            btm.SetPixel((int)(xx + x2), (int)(yy + y2), color);
+            while ((y2 - starty) < a || (startx - x1) > a)
+            {
+                x1 = x2;
+                y1 = y2;
+                x2 = x1 + y1 * a;
+                y2 = y1 - a * x2;
+                btm.SetPixel((int)(xx + x2), (int)(yy + y2), color);
+            }
             return btm;
         }
 
@@ -193,15 +190,7 @@ namespace DDA_Bres
 
         private Bitmap CirclePoints(Bitmap btm, int x, int y, int x1, int y1, Color color)
         {
-            //Bitmap btm = new Bitmap(700, 700);
-            /*btm.SetPixel(x, y, color);
-            btm.SetPixel(y, x, color);
-            btm.SetPixel(x, -y, color);
-            btm.SetPixel(y, -x, color);
-            btm.SetPixel(-x, y, color);
-            btm.SetPixel(-y, x, color);
-            btm.SetPixel(-x, -y, color);
-            btm.SetPixel(-y, -x, color);*/
+            
             btm.SetPixel(x1 + x, y1 + y, color);
             btm.SetPixel(x1 - x, y1 + y, color);
             btm.SetPixel(x1 + x, y1 - y, color);
@@ -210,12 +199,6 @@ namespace DDA_Bres
             btm.SetPixel(x1 - y, y1 + x, color);
             btm.SetPixel(x1 + y, y1 - x, color);
             btm.SetPixel(x1 - y, y1 - x, color);
-            return btm;
-        }
-        private Bitmap finalDDA(int x1, int y1, int x2, int y2, Color color)
-        {
-            Bitmap btm = new Bitmap(700, 700);
-            //flo
             return btm;
         }
     }
