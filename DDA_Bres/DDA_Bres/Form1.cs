@@ -25,52 +25,33 @@ namespace DDA_Bres
         private void button1_Click(object sender, EventArgs e)
         {
             Graphics g = CreateGraphics();
-            //Bitmap myBitmap = LineDDA(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text));
-            //g.DrawImage(myBitmap, 10, 50);
-            /*Bitmap myBitmap0 = LineDDA(0, 0, 200, 0);
-            Bitmap myBitmap2 = LineDDA(0, 0, 0, 70);
-            g.DrawImage(myBitmap0, 10, 50);
-            g.DrawImage(myBitmap2, 10, 50);
-            Bitmap myBitmap3 = LineDDA(200, 0, 0, 70);
-            Bitmap myBitmap4 = LineDDA(0, 70, 200, 70);
-            g.DrawImage(myBitmap3, 10, 50);
-            g.DrawImage(myBitmap4, 10, 50);
-            Bitmap myBitmap5 = LineDDA(0, 70, 200, 0);
-            g.DrawImage(myBitmap5, 10, 50);
-            Bitmap myBitmap6 = LineDDA(200, 0, 200, 70);
-            g.DrawImage(myBitmap6, 10, 50);
-            Bitmap myBitmap7 = LineDDA(0, 0, 100, -70);
-            g.DrawImage(myBitmap7, 10, 50);
-            Bitmap myBitmap8 = LineDDA(100, -70, 200, 0);
-            g.DrawImage(myBitmap8, 10, 50);*/
+            Bitmap myBitmap = new Bitmap(1500, 1500);
+
             if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" && textBox4.Text != "") {
-                Bitmap myBitmap = LineDDA(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text));
+                LineDDA(myBitmap, Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text));
                 g.DrawImage(myBitmap, 10, 50);
             }
-            Bitmap myBitmap0 = LineDDA(100, 0, 300, 0);
-            Bitmap myBitmap2 = LineDDA(100, 0, 100, 70);
-            g.DrawImage(myBitmap0, 10, 50);
-            g.DrawImage(myBitmap2, 10, 50);
-            Bitmap myBitmap3 = LineDDA(300, 0, 100, 70);
-            Bitmap myBitmap4 = LineDDA(100, 70, 300, 70);
-            g.DrawImage(myBitmap3, 10, 50);
-            g.DrawImage(myBitmap4, 10, 50);
-            Bitmap myBitmap5 = LineDDA(100, 70, 300, 0);
-            g.DrawImage(myBitmap5, 10, 50);
-            Bitmap myBitmap6 = LineDDA(300, 0, 300, 70);
-            g.DrawImage(myBitmap6, 10, 50);
-            Bitmap myBitmap7 = LineDDA(100, 0, 200, -70);
-            g.DrawImage(myBitmap7, 10, 50);
-            Bitmap myBitmap8 = LineDDA(200, -70, 300, 0);
-            g.DrawImage(myBitmap8, 10, 50);
             
+            LineDDA(myBitmap, 100, 0, 300, 0);
+            LineDDA(myBitmap, 100, 0, 100, 70);
+            LineDDA(myBitmap, 300, 0, 100, 70);
+            LineDDA(myBitmap, 100, 70, 300, 70);
+            LineDDA(myBitmap, 100, 70, 300, 0);
+            LineDDA(myBitmap, 300, 0, 300, 70);
+            LineDDA(myBitmap, 100, 0, 200, -70);
+            LineDDA(myBitmap, 200, -70, 300, 0);
+            g.DrawImage(myBitmap, 10, 50);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Graphics g = CreateGraphics();
-            Bitmap myBitmap = LineBres(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text));
-            g.DrawImage(myBitmap, 10, 50);
+            Bitmap myBitmap = new Bitmap(1500, 1500);
+            if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" && textBox4.Text != "")
+            {
+                LineBres(myBitmap, Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text));
+                g.DrawImage(myBitmap, 10, 50);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -78,8 +59,11 @@ namespace DDA_Bres
             Graphics g = CreateGraphics();
 
             Bitmap myBitmap = new Bitmap(1500, 1500);
-            CircleDDA(myBitmap, Convert.ToInt32(textBox1.Text) + 100, Convert.ToInt32(textBox2.Text) + 100, Convert.ToInt32(textBox5.Text), Color.Black);
-            g.DrawImage(myBitmap, 10, 50);
+            if (textBox1.Text != "" && textBox2.Text != "" && textBox5.Text != "")
+            {
+                CircleDDA(myBitmap, Convert.ToInt32(textBox1.Text) + 100, Convert.ToInt32(textBox2.Text) + 100, Convert.ToInt32(textBox5.Text), Color.Black);
+                g.DrawImage(myBitmap, 10, 50);
+            }
             
         }
 
@@ -87,11 +71,14 @@ namespace DDA_Bres
         {
             Graphics g = CreateGraphics();
             Bitmap myBitmap = new Bitmap(1500, 1500);
-            CircleBres(myBitmap, Convert.ToInt32(textBox1.Text) + 100, Convert.ToInt32(textBox2.Text) + 100, 0, Convert.ToInt32(textBox5.Text), Color.Black);
-            g.DrawImage(myBitmap, 10, 50);
+            if (textBox1.Text != "" && textBox2.Text != "" && textBox5.Text != "")
+            {
+                CircleBres(myBitmap, Convert.ToInt32(textBox1.Text) + 100, Convert.ToInt32(textBox2.Text) + 100, 0, Convert.ToInt32(textBox5.Text), Color.Black);
+                g.DrawImage(myBitmap, 10, 50);
+            }
         } 
 
-        private Bitmap LineDDA(int x1, int y1, int x2, int y2)
+        private Bitmap LineDDA(Bitmap nova, int x1, int y1, int x2, int y2)
         {
             if (x1 < 0) x1 = 0;
             if (x2 < 0) x2 = 0;
@@ -99,7 +86,7 @@ namespace DDA_Bres
             if ((y1 > y2 && y2>0) /*|| (y1<0 && y2>=0)*/ || (y1<0 && y2<0 && y1<y2)) 
             { int a = y1; y1 = y2; y2 = a; }
         
-            Bitmap nova = new Bitmap(1500, 1500);
+            //Bitmap nova = new Bitmap(1500, 1500);
             float dy = (y2 - y1), dx = (x2 - x1);
             float m = dy / dx;
             m = Math.Abs(m);
@@ -182,9 +169,8 @@ namespace DDA_Bres
             return nova;
         }
 
-        private Bitmap LineBres(int x1, int y1, int x2, int y2)
+        private Bitmap LineBres(Bitmap nova, int x1, int y1, int x2, int y2)
         {
-            Bitmap nova = new Bitmap(700, 700);
             int dx = (x2 - x1), dy = (y2 - y1);
             if (dy < dx)
             {
@@ -200,7 +186,7 @@ namespace DDA_Bres
                         y1++;
                     }
                     x1++;
-                    nova.SetPixel(x1, y1 + nova.Height / 4, Color.Black);
+                    nova.SetPixel(x1, y1 + nova.Height / 6, Color.Black);
                 }
             }
             else if (dx < dy) {
@@ -214,7 +200,7 @@ namespace DDA_Bres
                         x1++;
                     }
                     y1++;
-                    nova.SetPixel(x1, y1 + nova.Height / 4, Color.Black);
+                    nova.SetPixel(x1, y1 + nova.Height / 6, Color.Black);
                 }
             }
             return nova;
