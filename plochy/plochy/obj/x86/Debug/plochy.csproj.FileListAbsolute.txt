@@ -1,0 +1,18 @@
+C:\Users\yuliya\AppData\Local\Temporary Projects\plochy\bin\Debug\plochy.exe
+C:\Users\yuliya\AppData\Local\Temporary Projects\plochy\bin\Debug\plochy.pdb
+C:\Users\yuliya\AppData\Local\Temporary Projects\plochy\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\yuliya\AppData\Local\Temporary Projects\plochy\obj\x86\Debug\plochy.Form1.resources
+C:\Users\yuliya\AppData\Local\Temporary Projects\plochy\obj\x86\Debug\plochy.Properties.Resources.resources
+C:\Users\yuliya\AppData\Local\Temporary Projects\plochy\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\yuliya\AppData\Local\Temporary Projects\plochy\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\yuliya\AppData\Local\Temporary Projects\plochy\obj\x86\Debug\plochy.exe
+C:\Users\yuliya\AppData\Local\Temporary Projects\plochy\obj\x86\Debug\plochy.pdb
+C:\Users\yuliya\documents\visual studio 2010\Projects\plochy\plochy\obj\x86\Debug\plochy.exe
+C:\Users\yuliya\documents\visual studio 2010\Projects\plochy\plochy\obj\x86\Debug\plochy.pdb
+C:\Users\yuliya\documents\visual studio 2010\Projects\plochy\plochy\bin\Debug\plochy.exe
+C:\Users\yuliya\documents\visual studio 2010\Projects\plochy\plochy\bin\Debug\plochy.pdb
+C:\Users\yuliya\documents\visual studio 2010\Projects\plochy\plochy\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\yuliya\documents\visual studio 2010\Projects\plochy\plochy\obj\x86\Debug\plochy.Form1.resources
+C:\Users\yuliya\documents\visual studio 2010\Projects\plochy\plochy\obj\x86\Debug\plochy.Properties.Resources.resources
+C:\Users\yuliya\documents\visual studio 2010\Projects\plochy\plochy\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\yuliya\documents\visual studio 2010\Projects\plochy\plochy\obj\x86\Debug\GenerateResource.write.1.tlog
