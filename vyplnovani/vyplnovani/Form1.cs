@@ -50,16 +50,13 @@ namespace vyplnovani
         {
             Color oldC = btm.GetPixel(x, y);
             Stack<Point> p = new Stack<Point>();
-            timer1.Interval = 10000;
             p.Push(new Point(x, y));
             while (p.Count > 0)
             {
                 Point pZasobnik = p.Pop();
                 if (btm.GetPixel(pZasobnik.X, pZasobnik.Y) == oldC)
                 {
-                    timer1.Start();
                     btm.SetPixel(pZasobnik.X, pZasobnik.Y, newC);
-                    timer1.Stop();
                     p.Push(new Point(pZasobnik.X + 1, pZasobnik.Y));
                     p.Push(new Point(pZasobnik.X - 1, pZasobnik.Y));
                     p.Push(new Point(pZasobnik.X, pZasobnik.Y + 1));
@@ -161,129 +158,100 @@ namespace vyplnovani
         private void button2_Click(object sender, EventArgs e)
         {
             Graphics g = CreateGraphics();
-            Bitmap myBitmap = new Bitmap(@"C:\Users\yuliya\Documents\Visual Studio 2010\Images\image04.png");
+            Bitmap myBitmap = new Bitmap(@"C:\Users\yuliya\Documents\Visual Studio 2010\Images\kocourMaly.png");
             g.DrawImage(myBitmap, 10, 10);
-            Bitmap nova = new Bitmap(myBitmap.Height , myBitmap.Width);
-            //nova = halftoning(myBitmap);
-            g.DrawImage(nova, 10, 200);
+            halftoning(myBitmap, g);
         }
-        private Bitmap halftoning(Bitmap btm)
+        
+        private Bitmap halftoning(Bitmap btm, Graphics g)
         {
-            //Bitmap btm2 = new Bitmap(btm.Width*3, btm.Height*3);
-            Bitmap btm2 = new Bitmap(btm.Width, btm.Height);
-            Bitmap btm3x3 = new Bitmap(3, 3);
+            Bitmap btm2 = new Bitmap(btm.Width * 3, btm.Height * 3);
+            int[,] pole = new int[,] { { 6, 8, 4 }, { 1, 0, 3 }, { 5, 2, 7 } };
             Color barva;
-            for (int i = 0; i < btm.Height-3; i=i+3)
+            for (int i = 0; i < btm.Height; i ++)
             {
-                for (int j = 0; j < btm.Width-3; j=j+3)
+                for (int j = 0; j < btm.Width; j ++)
                 {
-                    //barva = btm.GetPixel(i, j);
-                    int r = 0, g = 0, b = 0;
-                    for (int m = i * 3; m < i * 3 + 3; m++)
-                    {
-                        for (int n = j * 3; n < j * 3 + 3; n++)
-                        {
-                            barva = btm.GetPixel(m, n);
-                            r += barva.R;
-                            g += barva.G;
-                            b += barva.B;
-                        }
-                    }
-                    r /= 9; g /= 9; b /= 9;
-                    double intensity = 0.299 * r + 0.587 * g + 0.114 * b;
+                    barva = btm.GetPixel(j, i);
+                    int intensity = 0;
+                    intensity = barva.R;
                     int prvni = 0, druhy = 255 / 9;
-                    int k;
+                    int k = 0;
                     for (k = 0; k < 9; k++)
                     {
-                        if (intensity > prvni || intensity < druhy) { break; }
+                        if (intensity >= prvni && intensity <= druhy) { break; }
                         prvni = druhy;
                         druhy += 255 / 9;
                     }
-                    Color[] c = new Color[9];
-                    switch (k)
+                    for (int m = 0; m < 3; m++)
                     {
-                        case 0: c[0] = Color.White; c[1] = Color.White; c[2] = Color.White;
-                            c[3] = Color.White; c[4] = Color.Black; c[5] = Color.White; c[6] = Color.White;
-                            c[7] = Color.White; c[8] = Color.White;
-                            break;
-                        case 1: c[0] = Color.White; c[1] = Color.White; c[2] = Color.White; c[3] = Color.Black;
-                            c[4] = Color.Black; c[5] = Color.White; c[6] = Color.White;
-                            c[7] = Color.White; c[8] = Color.White;
-                            break;
-                        case 2: c[0] = Color.White; c[1] = Color.White; c[2] = Color.White;
-                            c[3] = Color.Black; c[4] = Color.Black; c[5] = Color.White; c[6] = Color.White;
-                            c[7] = Color.Black; c[8] = Color.White;
-                            break;
-                        case 3: c[0] = Color.White; c[1] = Color.White; c[2] = Color.White;
-                            c[3] = Color.Black; c[4] = Color.Black; c[5] = Color.Black; c[6] = Color.White;
-                            c[7] = Color.Black; c[8] = Color.White;
-                            break;
-                        case 4: c[0] = Color.White; c[1] = Color.White; c[2] = Color.Black;
-                            c[3] = Color.Black; c[4] = Color.Black; c[5] = Color.Black; c[6] = Color.White;
-                            c[7] = Color.Black; c[8] = Color.White;
-                            break;
-                        case 5: c[0] = Color.White; c[1] = Color.White; c[2] = Color.Black;
-                            c[3] = Color.Black; c[4] = Color.Black; c[5] = Color.Black; c[6] = Color.White;
-                            c[7] = Color.Black; c[8] = Color.White;
-                            break;
-                        case 6: c[0] = Color.Black; c[1] = Color.White; c[2] = Color.Black;
-                            c[3] = Color.Black; c[4] = Color.Black; c[5] = Color.Black; c[6] = Color.Black;
-                            c[7] = Color.Black; c[8] = Color.White;
-                            break;
-                        case 7: c[0] = Color.Black; c[1] = Color.White; c[2] = Color.Black;
-                            c[3] = Color.Black; c[4] = Color.Black; c[5] = Color.Black; c[6] = Color.Black;
-                            c[7] = Color.Black; c[8] = Color.Black;
-                            break;
-                        case 8: c[0] = Color.Black; c[1] = Color.Black; c[2] = Color.Black;
-                            c[3] = Color.Black; c[4] = Color.Black; c[5] = Color.Black; c[6] = Color.Black;
-                            c[7] = Color.Black; c[8] = Color.Black;
-                            break;
-                    }
-                    btm3x3 =  bitmap3x3(c);
-                    k = 0;
-                    for (int m = i * 3; m < i * 3 + 3; m++)
-                    {
-                        for (int n = j * 3; n < j * 3 + 3; n++)
+                        for (int n = 0; n < 3; n++)
                         {
-                            btm2.SetPixel(m, n, c[k]);
-                            k++;
+                            if (pole[m, n] >= k || k == 9)
+                            {
+                                btm2.SetPixel(j * 3 + m, i * 3 + n, Color.Black);
+                            }
+                            else
+                            {
+                                btm2.SetPixel(j * 3 + m, i * 3 + n, Color.White);
+                            }
                         }
                     }
                 }
             }
+            g.DrawImage(btm2, 10, 200);
             return btm2;
         }
-        private Bitmap bitmap3x3(Color[] color/*, Color c2, Color c3, Color c4, Color c5, Color c6, Color c7, Color c8, Color c9*/)
+
+        private Bitmap floydSteinberg(Bitmap btm, Graphics g)
         {
-            Bitmap btm = new Bitmap(3,3);
-            int k=0;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < btm.Width-1; i+=2)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < btm.Height-1; j+=2)
                 {
-                    btm.SetPixel(i,j, color[k]);
-                    k++;
+                    Color oldP = btm.GetPixel(i, j);
+                    Color newP;
+                    if(oldP.R<128) { newP = Color.FromArgb(0,0,0); }
+                    else newP = Color.FromArgb(255, 255, 255);
+                    btm.SetPixel(i, j, newP);
+                    int qErr = oldP.R - newP.R;
+                    Color c = btm.GetPixel(i+1, j);
+                    int a = c.R + 7 / 255 * qErr;
+                    btm.SetPixel(i+1,j, Color.FromArgb(a, a, a));
+                    c = btm.GetPixel(i, j+1);
+                    a = c.R + 3 / 255 * qErr;
+                    btm.SetPixel(i, j+1, Color.FromArgb(a, a, a));
+                    c = btm.GetPixel(i+1, j + 1);
+                    a = c.R + 3 / 255 * qErr;
+                    btm.SetPixel(i+1, j + 1, Color.FromArgb(a, a, a));
+                    c = btm.GetPixel(i + 1, j + 1);
+                    a = c.R + 5 / 255 * qErr;
+                    btm.SetPixel(i + 1, j + 1, Color.FromArgb(a, a, a));
+                    if (i > 0)
+                    {
+                        c = btm.GetPixel(i - 1, j + 1);
+                        a = c.R + 1 / 255 * qErr;
+                        btm.SetPixel(i - 1, j + 1, Color.FromArgb(a, a, a));
+                    }
                 }
             }
+            g.DrawImage(btm, 10, 200);
             return btm;
         }
-        private Bitmap floydSteinberg(Bitmap btm)
+        private Point color(Point p)
         {
-            for (int i = 0; i < btm.Height; i++)
-            {
-                for (int j = 0; j < btm.Width; j++)
-                {
-                    int ci = i * btm.Width + j;
-                    Color oldC = btm.GetPixel(i, j);
-                    Point pixel = new Point(i, j);
-                    Point oldP = pixel;
-                    //Point newP = new Point(newP.X / 256, newP.Y / 256);
-                    //pixel = newP;
-                    //Point er = new Point(oldP.X - newP.X, oldP.Y - newP.Y);
-                    //(pixel.X + 1) = pixel.X + 1 + er.X * 7 / 16;
-                }
-            }
-            return btm;
+            Point newp = p;
+            newp.X = (int)(p.X/256);
+            newp.Y = (int)(p.Y/256);
+            return newp;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Graphics g = CreateGraphics();
+            Bitmap myBitmap = new Bitmap(@"C:\Users\yuliya\Documents\Visual Studio 2010\Images\kocourMaly.png");
+            g.DrawImage(myBitmap, 10, 10);
+            floydSteinberg(myBitmap, g);
         }
     }
 }
