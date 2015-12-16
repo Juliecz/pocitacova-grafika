@@ -78,8 +78,9 @@ namespace DDA_Bres
                 CircleDDA(myBitmap, 100, 100, Convert.ToInt32(textBox5.Text), Color.Black);
                 g.DrawImage(myBitmap, 10, 50);
             }
-            CircleDDA(myBitmap, 200, 0, 20, Color.Black);
-            
+            CircleDDA(myBitmap, 190, 200, 20, Color.Black);
+            CircleDDA(myBitmap, 300, 180, 30, Color.Black);
+            g.DrawImage(myBitmap, 10, 50);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -96,13 +97,16 @@ namespace DDA_Bres
                 CircleBres(myBitmap, 100, 100, 0, Convert.ToInt32(textBox5.Text), Color.Black);
                 g.DrawImage(myBitmap, 10, 50);
             }
+            CircleBres(myBitmap, 190, 200, 0, 40, Color.Black);
+            CircleBres(myBitmap, 300, 180, 0, 50, Color.Black);
+            g.DrawImage(myBitmap, 10, 50);
         } 
 
         private Bitmap LineDDA(Bitmap nova, int x1, int y1, int x2, int y2)
         {
             if (x1 < 0) x1 = Math.Abs(x1);
             if (x2 < 0) x2 = Math.Abs(x2);
-            if (x1 > x2) { int a = x1; x1 = x2; x2 = a; } //vymena y?
+            if (x1 > x2) { int a = x1; x1 = x2; x2 = a;  }
             float dy = (y2 - y1), dx = (x2 - x1);
             float m = dy / dx;
             m = Math.Abs(m);
@@ -177,8 +181,8 @@ namespace DDA_Bres
 
         private Bitmap LineBres(Bitmap nova, int x1, int y1, int x2, int y2)
         {
-            if (x1 > x2) { int a = x1; x1 = x2; x2 = a; } //vymena y?
-            int dx = (x2 - x1), dy = (y2 - y1);
+            if (x1 > x2) { int a = x1; x1 = x2; x2 = a; } 
+            int dx = (x2 - x1), dy = (Math.Abs(y2) - y1);
             if (Math.Abs(dy) < dx) //osa x
             {
                 int d = 2 * Math.Abs(dy) - dx;
@@ -230,10 +234,19 @@ namespace DDA_Bres
                     }
                 }
             }
+            else if (Math.Abs(dy) == Math.Abs(dx))
+            {
+                while (x1 < x2) {
+                    if (y1 > y2) { y1--; }
+                    else if (y1 < y2) { y1++; }
+                    x1++;
+                    nova.SetPixel(x1, y1 + nova.Height / 6, Color.Black);
+                }
+            }
             return nova;
         }
 
-        private Bitmap CircleDDA(Bitmap btm, double xx, double yy, int r, Color color) 
+        private Bitmap CircleDDA(Bitmap btm, double xx, double yy, int r, Color color)
         {
             double v, x1, y1, x2, y2, startx, starty, a;
             int i;
@@ -245,7 +258,8 @@ namespace DDA_Bres
 
             i = 0;
             v = Math.Pow((double)2, (double)i);
-            while (v < r) {
+            while (v < r)
+            {
                 v = Math.Pow((double)2, (double)i);
                 i++;
             }

@@ -34,8 +34,17 @@ namespace Curves
         private void button1_Click(object sender, EventArgs e)
         {
             Graphics g = CreateGraphics();
-            Bitmap myBitmap = bezierCurve(Convert.ToDouble(textBox1.Text), Convert.ToDouble(textBox2.Text), Convert.ToDouble(textBox3.Text), Convert.ToDouble(textBox4.Text), Convert.ToDouble(textBox5.Text), Convert.ToDouble(textBox6.Text), Convert.ToDouble(textBox7.Text), Convert.ToDouble(textBox8.Text), Color.Black);
-            g.DrawImage(myBitmap, 10, 70);
+            if (textBox1.Text != "" || textBox2.Text != "" || textBox3.Text != "" || textBox4.Text != "" || textBox5.Text != "" || textBox6.Text != "" || textBox7.Text != "" || textBox8.Text != "")
+            {
+                Bitmap myBitmap = bezierCurve(Convert.ToDouble(textBox1.Text), Convert.ToDouble(textBox2.Text), Convert.ToDouble(textBox3.Text), Convert.ToDouble(textBox4.Text), Convert.ToDouble(textBox5.Text), Convert.ToDouble(textBox6.Text), Convert.ToDouble(textBox7.Text), Convert.ToDouble(textBox8.Text), Color.Black);
+                g.DrawImage(myBitmap, 10, 70);
+            }
+            Bitmap myBitmap2 = bezierCurve(100, 200, 70, 50, 260, 55, 200, 200, Color.Black);
+            g.DrawImage(myBitmap2, 20, 70);
+            Bitmap myBitmap4 = bezierCurve(10, 100, 13, 140, 200, 60, 200, 30, Color.Black);
+            g.DrawImage(myBitmap4, 10, 70);
+            Bitmap myBitmap3 = bezierCurve(100, 100, 13, 14, 150, 100, 200, 14, Color.Black);
+            g.DrawImage(myBitmap3, 10, 70);
         }
 
         private Bitmap bezierCurve(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4, Color barva) 
@@ -79,11 +88,18 @@ namespace Curves
         private void button2_Click(object sender, EventArgs e)
         {
             Graphics g = CreateGraphics();
-            Bitmap myBitmap = fergusonCurve(Convert.ToDouble(textBox1.Text), Convert.ToDouble(textBox2.Text), Convert.ToDouble(textBox3.Text), Convert.ToDouble(textBox4.Text), Convert.ToDouble(textBox5.Text), Convert.ToDouble(textBox6.Text), Convert.ToDouble(textBox7.Text), Convert.ToDouble(textBox8.Text), Color.Black);           
-            g.DrawImage(myBitmap, 10, 70);
+            if (textBox1.Text != "" || textBox2.Text != "" || textBox3.Text != "" || textBox4.Text != "" || textBox5.Text != "" || textBox6.Text != "" || textBox7.Text != "" || textBox8.Text != "")
+            {
+                Bitmap myBitmap = fergusonCurve(Convert.ToDouble(textBox1.Text), Convert.ToDouble(textBox2.Text), Convert.ToDouble(textBox3.Text), Convert.ToDouble(textBox4.Text), Convert.ToDouble(textBox5.Text), Convert.ToDouble(textBox6.Text), Convert.ToDouble(textBox7.Text), Convert.ToDouble(textBox8.Text), Color.Black);
+                g.DrawImage(myBitmap, 10, 70);
+            }
             Pen pen = new Pen(Color.Red, 1);
-            g.DrawBezier(pen, new Point(100, 200), new Point(70, 50), new Point(260, 55), new Point(200, 200));
-            
+            Bitmap myBitmap2 = bezierCurve(100, 100, 13, 14, 200, 14, 150, 100, Color.Black);
+            g.DrawImage(myBitmap2, 20, 70);
+            Bitmap myBitmap3 = fergusonCurve(10, 130, 140, 20, 200, 200, 230, 280, Color.Brown);
+            g.DrawImage(myBitmap3, 0, 70);
+            Bitmap myBitmap4 = fergusonCurve(10, 100, 13, 140, 200, 60, 200, 30, Color.Brown);
+            g.DrawImage(myBitmap4, 10, 70);
         }
     }
 }

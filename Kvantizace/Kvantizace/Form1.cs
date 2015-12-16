@@ -22,31 +22,24 @@ namespace Kvantizace
             Graphics g = this.CreateGraphics();
             g.DrawImage(myBitmap, 10, 65);
 
-            /*for (int m = 0; m < 2; m++)
+            for (int m = 0; m < 2; m++)
             {
                 Bitmap nova = gray(myBitmap, m);
-                g.DrawImage(nova, 255 * m + 265, 65);
+                g.DrawImage(nova, 255 * m + 10, 265);
             }
             
             int i = 10;
-            for (int n = 2; n < 12; n = n + 2)
+            for (int n = 2; n < 10; n = n + 2)
             {
-                Bitmap nova2 = Small(myBitmap, n);
-                g.DrawImage(nova2, i, 325);
+                Bitmap nova2 = Small(g, myBitmap, n);
+                g.DrawImage(nova2, i+ 470, 50);
                 i = i + nova2.Width;
             }
-            Bitmap nova7 = SmallSuperSampling(myBitmap, 3);
-            g.DrawImage(nova7, 400, 325);
-            Bitmap nova4 = Kvantizace(myBitmap, 2);
-            Bitmap nova5 = Kvantizace(myBitmap, 5);
-            g.DrawImage(nova4, 10, 450);
-            g.DrawImage(nova5, 265, 420);
-            Bitmap nova6 = Sampling(myBitmap, 5);
-            g.DrawImage(nova6, 530, 420);*/
-            Bitmap nova = Kvantizace(myBitmap, 15);
-            g.DrawImage(nova, 10, 265);
-
-
+            //SmallSuperSampling(g, myBitmap, 3);
+            //g.DrawImage(nova7, 400, 325);
+            //SmallSuperSampling(g, myBitmap, 3);
+            Sampling(g, myBitmap, 5);
+            Kvantizace(g, myBitmap, 3);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -71,7 +64,7 @@ namespace Kvantizace
             return newB;
         }
         //Алиасинг
-        private static Bitmap Small(Bitmap b1, int k)
+        private static Bitmap Small(Graphics gr, Bitmap b1, int k)
         {
             Bitmap newB = new Bitmap(b1.Width / k, b1.Height / k);
             for (int i = 0; i < newB.Width; i++)
@@ -80,10 +73,11 @@ namespace Kvantizace
                     Color c = b1.GetPixel(i * k, j * k);
                     newB.SetPixel(i, j, c);
                 }
+            //gr.DrawImage(newB, 470, 50);
             return newB;
         }
         //СуперСамплинг Маленькая
-        private static Bitmap SmallSuperSampling(Bitmap b1, int k)
+        private static Bitmap SmallSuperSampling(Graphics gr, Bitmap b1, int k)
         {
             Bitmap newB = new Bitmap(b1.Width / k, b1.Height / k);
             for (int i = 0; i < newB.Width; i++)
@@ -103,13 +97,13 @@ namespace Kvantizace
                     r /= k * k;
                     g /= k * k;
                     b /= k * k;
-                    //Color c = b1.GetPixel(i * k, j * k);
                     newB.SetPixel(i, j, Color.FromArgb(r, g, b));
                 }
+            gr.DrawImage(newB, 500, 100);
             return newB;
         }
         //Самплинг
-        private static Bitmap Sampling(Bitmap b1, int k)
+        private static Bitmap Sampling(Graphics gr, Bitmap b1, int k)
         {
             Bitmap newB = new Bitmap(b1.Width, b1.Height);
             Color c;
@@ -139,12 +133,12 @@ namespace Kvantizace
                         }
                     }
                 }
+            gr.DrawImage(newB, 500, 270);
             return newB;
         }
 
-        private static Bitmap Kvantizace(Bitmap b1, int n)
+        private static Bitmap Kvantizace(Graphics gr, Bitmap b1, int n)
         {
-            //l2.Text = "";
             Bitmap newB = new Bitmap(b1.Width, b1.Height);
             int intensity = 0;
             int prvni = 0;
@@ -167,6 +161,7 @@ namespace Kvantizace
                         }
                     }
             }
+            gr.DrawImage(newB, 270, 50);
             return newB;
         }
 

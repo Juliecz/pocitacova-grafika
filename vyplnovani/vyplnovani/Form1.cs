@@ -25,7 +25,7 @@ namespace vyplnovani
         private void button1_Click(object sender, EventArgs e)
         {
             Graphics g = CreateGraphics();
-            Bitmap myBitmap = new Bitmap(@"C:\Users\yuliya\Documents\Visual Studio 2010\Images\image08.png");
+            Bitmap myBitmap = new Bitmap(@"C:\Users\yuliya\Documents\Visual Studio 2010\Images\image08.png"); //image08
             g.DrawImage(myBitmap, 10, 10);
             Random rand = new Random();
             int x = 0, y = 0;
@@ -39,7 +39,7 @@ namespace vyplnovani
                 if (y < pole[2] || y > pole[3]) { k = false; }
                 if (x < pole[0] || x > pole[1]) { k = false; }
             } while (!k);
-            
+            //label1.Text = "x: " + x + " y: " + y;
             g.DrawImage(myBitmap, 10, 200);
             Bitmap nova = scanLine(myBitmap, x, y, Color.Yellow);
             g.DrawImage(nova, 10, 200);
@@ -66,36 +66,30 @@ namespace vyplnovani
 
             return btm;
         }
-        private Bitmap radek(Bitmap btm, int x, int y, Color newC)
+        private Bitmap radek(Graphics g, Bitmap btm, int x, int y, Color newC)
         {
-            
-            /*Queue<Point> q = new Queue<Point>();
-            Point p = new Point(x, y);
-            Color oldC = btm.GetPixel(x, y);
-            q.Enqueue(p);
-            while (q.Count > 0)
-            {
-                Point pFronta = q.Dequeue();
-                if (btm.GetPixel(pFronta.X, pFronta.Y) == oldC)
-                    continue;
-                Point first = pFronta, second = new Point(pFronta.X, pFronta.Y);
-                while(first.X >= 0 && btm.GetPixel(first.X, first.Y) == oldC)
-                {
-                    btm.SetPixel(first.X, first.Y, newC);
-                    if (first.Y > 0 && btm.GetPixel(first.X, first.Y - 1) == oldC) { q.Enqueue(new Point(first.X, first.Y - 1)); }
-                    if (first.Y < btm.Height - 1 && btm.GetPixel(first.X, first.Y + 1) == oldC) { q.Enqueue(new Point(first.X, first.Y + 1)); }
-                    first.X--;
-                }
-                while (second.X <= btm.Width - 1 && btm.GetPixel(second.X, second.Y) == oldC)
-                {
-                    btm.SetPixel(second.X, second.Y, newC);
-                    if (second.Y > 0 && btm.GetPixel(second.X, second.Y - 1) == oldC) { q.Enqueue(new Point(second.X, second.Y - 1)); }
-                    if (second.Y < btm.Height - 1 && btm.GetPixel(second.X, second.Y + 1) == oldC) { q.Enqueue(new Point(second.X, second.Y + 1)); }
-                    first.X++;
-                }
-            }*/
             int [] pole = minMax(btm);
-            Point min = new Point();
+            Point nahoru = new Point();
+            nahoru = vyplnitRadek(g, btm, x, y, newC);
+            Point dolu = nahoru;
+            //label1.Text = "x: " + dolu.X + " y: " + dolu.Y;
+            while (nahoru.Y > pole[2])
+            {
+                if (btm.GetPixel(nahoru.X, nahoru.Y).R == 0) { nahoru.X++; continue; }
+                if (nahoru.X < pole[1] && nahoru.X > pole[0]) { vyplnitRadek(g, btm, nahoru.X, nahoru.Y, newC); }
+                nahoru.Y--;
+            }
+            while (dolu.Y < pole[3])
+            {
+                if (btm.GetPixel(dolu.X, dolu.Y).R == 0) { dolu.X++; continue; }
+                if (dolu.X < pole[1] && dolu.X > pole[0]) vyplnitRadek(g, btm, dolu.X, dolu.Y, newC);
+                dolu.Y++;
+            }
+            //label1.Text += "x: "+dolu.X+" y: "+dolu.Y;
+            return btm;
+        }
+        private Point vyplnitRadek(Graphics g, Bitmap btm, int x, int y, Color newC)
+        {
             for (int i = x; i < btm.Width; i++)
             {
                 if (btm.GetPixel(i, y).R != 0) { btm.SetPixel(i, y, newC); }
@@ -104,91 +98,12 @@ namespace vyplnovani
             for (int i = x; i > 0; i--)
             {
                 if (btm.GetPixel(i, y).R != 0) { btm.SetPixel(i, y, newC); }
-                else { min.X = i; min.Y = y; break; }
+                else { Point p = new Point(i, y); return p; }
             }
-            
-            while (min.Y < pole[3])
-            {
-                y++;
-                x++;
-                min.Y = y;
-                min.X = x;
-                while (btm.GetPixel(min.X, min.Y).R == 0) { min.X = x + 1; }
-                for (int i = min.X; i < btm.Width; i++)
-                {
-                    if (btm.GetPixel(i, min.Y).R != 0) { btm.SetPixel(i, min.Y, newC); }
-                    else { break; }
-                }
-                for (int i = min.X; i > 0; i--)
-                {
-                    if (btm.GetPixel(i, min.Y).R != 0) { btm.SetPixel(i, min.Y, newC); }
-                    else { min.X = i; break; }
-                }
-            }
-            //label1.Text = Convert.ToString(xmin + ", " +xmax);
-            return btm;
+            Point p1 = new Point(btm.Width, btm.Height);
+            return p1;
         }
-        private Bitmap fill(Bitmap btm, Label l)
-        {
-            Bitmap btm2 = new Bitmap(btm.Height, btm.Width);
-            int x=0, y=0;
-            bool k = false;
-            int[] pole = minMax(btm);
-            Random rand = new Random();
-            do
-            {
-                x = rand.Next(btm.Width);
-                y = rand.Next(btm.Height);
-                k = kontrola(btm, x, y);
-                if (y < pole[2] || y > pole[3]) { k = false; }
-                if (x < pole[0] || x > pole[1]) { k = false; }
-            } while (!k);
-            label1.Text = Convert.ToString(x + ", "+ y);
-            /*Queue<Point> q = new Queue<Point>();
-            Point p = new Point(x, y);
-            Color oldC = btm.GetPixel(x, y), newC = Color.Brown;
-            q.Enqueue(p);
-            while (q.Count > 0)
-            {
-                Point pFronta = q.Dequeue();
-                //if (btm.GetPixel(pFronta.X, pFronta.Y) == oldC)
-                  //  continue;
-                /*Point first = pFronta, second = new Point(pFronta.X, pFronta.Y);
-                while (first.X >= 0 && btm.GetPixel(first.X, first.Y) == oldC)
-                {
-                    btm.SetPixel(first.X, first.Y, newC);
-                    if (first.Y > 0 && btm.GetPixel(first.X, first.Y - 1) == oldC) { q.Enqueue(new Point(first.X, first.Y - 1)); }
-                    if (first.Y < btm.Height - 1 && btm.GetPixel(first.X, first.Y + 1) == oldC) { q.Enqueue(new Point(first.X, first.Y + 1)); }
-                    first.X--;
-                }*
-                while (btm.GetPixel(pFronta.X, pFronta.Y) == oldC)
-                {
-                    if (btm.GetPixel(pFronta.X, pFronta.Y-1) == oldC) { q.Enqueue(new Point(pFronta.X, pFronta.Y - 1)); }
-                    if (btm.GetPixel(pFronta.X, pFronta.Y+1) == oldC) { q.Enqueue(new Point(pFronta.X, pFronta.Y+ 1)); }
-                    if (btm.GetPixel(pFronta.X-1, pFronta.Y) == oldC) { q.Enqueue(new Point(pFronta.X-1, pFronta.Y)); }
-                    if (btm.GetPixel(pFronta.X+1, pFronta.Y) == oldC) { q.Enqueue(new Point(pFronta.X+1, pFronta.Y)); }
-                }
-            }*/
-            //kontrola(btm, 75, 75);
-            /*Color oldC = btm.GetPixel(x, y), newC = Color.Yellow;
-            Stack<Point> p = new Stack<Point>();
-            p.Push(new Point(x, y));
-            while (p.Count > 0)
-            {
-                Point pZasobnik = p.Pop();
-                if (btm.GetPixel(pZasobnik.X, pZasobnik.Y) == oldC && pZasobnik.X>0 && pZasobnik.Y>0)
-                {
-                    btm2.SetPixel(pZasobnik.X, pZasobnik.Y, newC);
-                    p.Push(new Point(pZasobnik.X + 1, pZasobnik.Y));
-                    p.Push(new Point(pZasobnik.X - 1, pZasobnik.Y));
-                    p.Push(new Point(pZasobnik.X, pZasobnik.Y + 1));
-                    p.Push(new Point(pZasobnik.X, pZasobnik.Y - 1));
-
-                }
-            }*/
-            return btm;
-        }
-
+        
         private int[] minMax(Bitmap btm)
         {
             int[] pole = new int[4];
@@ -293,8 +208,10 @@ namespace vyplnovani
                 k = kontrola(myBitmap, x, y);
                 if (y < pole[2] || y > pole[3]) { k = false; }
                 if (x < pole[0] || x > pole[1]) { k = false; }
+                if (myBitmap.GetPixel(x, y).R == 0) { k = false; }
             } while (!k);
-            Bitmap nova = radek(myBitmap, x, y, Color.RosyBrown);
+            //label1.Text = "x: " + x + " y: " + y;
+            Bitmap nova = radek(g, myBitmap, x, y, Color.RosyBrown);
             g.DrawImage(nova, 10, 200);
         }
         private Bitmap halftoning(Bitmap btm, Graphics g)

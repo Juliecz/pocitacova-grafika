@@ -24,53 +24,23 @@ namespace RLE_QuadTree
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Bitmap myBitmap = new Bitmap(@"C:\Users\yuliya\Documents\Visual Studio 2010\Images\image02.png");
+            Bitmap myBitmap = new Bitmap(@"C:\Users\yuliya\Documents\Visual Studio 2010\Images\image03.png");
             Graphics g = CreateGraphics();
             g.DrawImage(myBitmap, 10, 50);
-            //Bitmap nova = QuadTree(myBitmap, 10, 10, label1, label2);
             textBox1.Text = RLE(myBitmap);
-        }
-
-        private Bitmap QuadTree(Bitmap b1, int sirka, int vyska, int x, int y/*x=0, y=velikObrazku*/, Label l)
-        {
-            int i, j;
-            l.Text = "";
-            bool jinaBarva = false;
-            Bitmap newB = new Bitmap(b1.Width, b1.Height);
-            Color barva1 = b1.GetPixel(0, 0), barva2;
-            for (i = 0; i < sirka; i= i++)
-            {
-                for (j = 0; j < vyska; j++)
-                {
-                    barva2 = b1.GetPixel(i, j);
-                    if (barva2 != barva1)
-                    {
-                        jinaBarva = true;
-                        break;
-                    }
-                }
-                l.Text += "\n";
-            }
-            if (jinaBarva) {
-                /*QuadTree();
-                QuadTree();
-                QuadTree();
-                QuadTree();*/
-            }
-            return newB;
+            label1.Text = "Kvadrantovy strom: ";
+            label1.Text += kvadrantovyS(0, 0, myBitmap.Width, myBitmap.Height, myBitmap);
         }
 
         private string RLE(Bitmap b1) {
             int citac = 0;
-            string c = "", text = "";
+            string  text = "";
             Color barva1, barva2;
-            //barva1 = b1.GetPixel(0, 0);
-            
             for (int i = 0; i < b1.Height; i++)
             {
                 barva1 = b1.GetPixel(0,i);
                 citac = 0;
-                text += (i+1) + " ";
+                //text += (i+1) + " ";
                 for (int j = 0; j < b1.Width; j++)
                 {
                     barva2 = b1.GetPixel(j,i);
@@ -78,31 +48,43 @@ namespace RLE_QuadTree
                         citac++;
                     }
                     else {
-                        /*if (barva1 == Color.FromArgb(0, 0, 0)) c = "C";
-                        else if (barva1 == Color.FromArgb(255, 255, 255)) c = "B";
-                        else c = "Z";*/
                         text += " (" + citac + " , Barva)";
                         barva1 = barva2;
                         citac = 1;
                     }
                 }
-                /*if (barva1 == Color.FromArgb(0, 0, 0)) c = "C";
-                else if (barva1 == Color.FromArgb(255, 255, 255)) c = "B";
-                else c = "Z";*/
-                //text += " (" + citac + " ," + c + ")\r\n";
                 if (citac != 0)
                 {
                     text += " (" + citac + " , Barva)\r\n";
                 }
-                //citac = 0;
             }
             return text;
         }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
+        public string kvadrantovyS(int x, int y, int sirka, int vyska, Bitmap btm)
+        {
+            string text = "";
+            for (int i = x + 1; i < x + sirka; i++)
+            {
+                for (int j = y; j < y + vyska; j++)
+                {
+                    if (btm.GetPixel(i, j).ToArgb() != btm.GetPixel(i - 1, j).ToArgb())
+                    {
+                        text += "(" + kvadrantovyS(x, y, sirka / 2, vyska / 2, btm);
+                        text += " " + kvadrantovyS(x + sirka / 2, y, sirka / 2, vyska / 2, btm);
+                        text += " " + kvadrantovyS(x, y + vyska / 2, sirka / 2, vyska / 2, btm);
+                        text += " " + kvadrantovyS(x + sirka / 2, y + vyska / 2, sirka / 2, vyska / 2, btm) + ")";
+                        return text;
+                    }
+                }
+            }
+            return text += btm.GetPixel(x, y).R.ToString();
+        }
 
     }
+
+
 }

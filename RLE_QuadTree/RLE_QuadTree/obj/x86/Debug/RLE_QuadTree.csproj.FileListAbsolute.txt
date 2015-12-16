@@ -7,3 +7,12 @@ C:\Users\yuliya\AppData\Local\Temporary Projects\RLE_QuadTree\obj\x86\Debug\Gene
 C:\Users\yuliya\AppData\Local\Temporary Projects\RLE_QuadTree\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\yuliya\AppData\Local\Temporary Projects\RLE_QuadTree\obj\x86\Debug\RLE_QuadTree.exe
 C:\Users\yuliya\AppData\Local\Temporary Projects\RLE_QuadTree\obj\x86\Debug\RLE_QuadTree.pdb
+C:\Users\yuliya\documents\visual studio 2010\Projects\RLE_QuadTree\RLE_QuadTree\obj\x86\Debug\RLE_QuadTree.exe
+C:\Users\yuliya\documents\visual studio 2010\Projects\RLE_QuadTree\RLE_QuadTree\obj\x86\Debug\RLE_QuadTree.pdb
+C:\Users\yuliya\documents\visual studio 2010\Projects\RLE_QuadTree\RLE_QuadTree\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\yuliya\documents\visual studio 2010\Projects\RLE_QuadTree\RLE_QuadTree\obj\x86\Debug\RLE_QuadTree.Form1.resources
+C:\Users\yuliya\documents\visual studio 2010\Projects\RLE_QuadTree\RLE_QuadTree\obj\x86\Debug\RLE_QuadTree.Properties.Resources.resources
+C:\Users\yuliya\documents\visual studio 2010\Projects\RLE_QuadTree\RLE_QuadTree\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\yuliya\documents\visual studio 2010\Projects\RLE_QuadTree\RLE_QuadTree\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\yuliya\documents\visual studio 2010\Projects\RLE_QuadTree\RLE_QuadTree\bin\Debug\RLE_QuadTree.exe
+C:\Users\yuliya\documents\visual studio 2010\Projects\RLE_QuadTree\RLE_QuadTree\bin\Debug\RLE_QuadTree.pdb

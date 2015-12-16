@@ -7,3 +7,16 @@ C:\Users\yuliya\AppData\Local\Temporary Projects\ctverecOtoceni\obj\x86\Debug\Ge
 C:\Users\yuliya\AppData\Local\Temporary Projects\ctverecOtoceni\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\yuliya\AppData\Local\Temporary Projects\ctverecOtoceni\obj\x86\Debug\ctverecOtoceni.exe
 C:\Users\yuliya\AppData\Local\Temporary Projects\ctverecOtoceni\obj\x86\Debug\ctverecOtoceni.pdb
+C:\Users\yuliya\documents\visual studio 2010\Projects\ctverecOtoceni\ctverecOtoceni\obj\x86\Debug\ctverecOtoceni.exe
+C:\Users\yuliya\documents\visual studio 2010\Projects\ctverecOtoceni\ctverecOtoceni\obj\x86\Debug\ctverecOtoceni.pdb
+C:\Users\yuliya\documents\visual studio 2010\Projects\ctverecOtoceni\ctverecOtoceni\bin\Debug\ctverecOtoceni.exe
+C:\Users\yuliya\documents\visual studio 2010\Projects\ctverecOtoceni\ctverecOtoceni\bin\Debug\ctverecOtoceni.pdb
+C:\Users\yuliya\documents\visual studio 2010\Projects\ctverecOtoceni\ctverecOtoceni\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\yuliya\documents\visual studio 2010\Projects\ctverecOtoceni\ctverecOtoceni\obj\x86\Debug\ctverecOtoceni.Form1.resources
+C:\Users\yuliya\documents\visual studio 2010\Projects\ctverecOtoceni\ctverecOtoceni\obj\x86\Debug\ctverecOtoceni.Properties.Resources.resources
+C:\Users\yuliya\documents\visual studio 2010\Projects\ctverecOtoceni\ctverecOtoceni\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\yuliya\documents\visual studio 2010\Projects\ctverecOtoceni\ctverecOtoceni\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\yuliya\documents\visual studio 2010\Projects\ctverecOtoceni\ctverecOtoceni\obj\x86\Debug\UserControl1.baml
+C:\Users\yuliya\documents\visual studio 2010\Projects\ctverecOtoceni\ctverecOtoceni\obj\x86\Debug\UserControl1.g.cs
+C:\Users\yuliya\documents\visual studio 2010\Projects\ctverecOtoceni\ctverecOtoceni\obj\x86\Debug\ctverecOtoceni_MarkupCompile.cache
+C:\Users\yuliya\documents\visual studio 2010\Projects\ctverecOtoceni\ctverecOtoceni\obj\x86\Debug\ctverecOtoceni.g.resources
