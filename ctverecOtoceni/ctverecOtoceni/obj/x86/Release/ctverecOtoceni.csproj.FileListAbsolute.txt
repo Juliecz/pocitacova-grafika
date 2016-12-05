@@ -1,9 +1,0 @@
-C:\Users\yuliya\AppData\Local\Temporary Projects\ctverecOtoceni\bin\Release\ctverecOtoceni.exe
-C:\Users\yuliya\AppData\Local\Temporary Projects\ctverecOtoceni\bin\Release\ctverecOtoceni.pdb
-C:\Users\yuliya\AppData\Local\Temporary Projects\ctverecOtoceni\obj\x86\Release\ResolveAssemblyReference.cache
-C:\Users\yuliya\AppData\Local\Temporary Projects\ctverecOtoceni\obj\x86\Release\ctverecOtoceni.Form1.resources
-C:\Users\yuliya\AppData\Local\Temporary Projects\ctverecOtoceni\obj\x86\Release\ctverecOtoceni.Properties.Resources.resources
-C:\Users\yuliya\AppData\Local\Temporary Projects\ctverecOtoceni\obj\x86\Release\GenerateResource.read.1.tlog
-C:\Users\yuliya\AppData\Local\Temporary Projects\ctverecOtoceni\obj\x86\Release\GenerateResource.write.1.tlog
-C:\Users\yuliya\AppData\Local\Temporary Projects\ctverecOtoceni\obj\x86\Release\ctverecOtoceni.exe
-C:\Users\yuliya\AppData\Local\Temporary Projects\ctverecOtoceni\obj\x86\Release\ctverecOtoceni.pdb
