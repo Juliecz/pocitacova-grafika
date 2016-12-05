@@ -1,18 +1,18 @@
 # User-specific files
 *.suo
-*.user
+#*.user
 *.sln
-*.csproj
+#*.csproj
 
 # Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
-bld/
-[Bb]in/
-[Oo]bj/
-[Ll]og/
-Properties/
+#[Dd]ebug/
+#[Dd]ebugPublic/
+#[Rr]elease/
+#[Rr]eleases/
+#x64/
+#x86/
+#bld/
+#[Bb]in/
+#[Oo]bj/
+#[Ll]og/
+#Properties/
